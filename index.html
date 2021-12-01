@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Realtime Filter Webapp using PoseNet Neural Network</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+</head>
+
+<body background="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAhFBMVEX+/PsAAAD////5+fmLi4vv7+/BwcHR0dHMzMxDQ0OUlJTW1tbs7OyRkZGysrLf398jIyNlZWU5OTmbm5u5ublvb2+ioqJiYmLk5OR0dHQ/Pz80NDTc3NzCwsJJSUl7e3tYWFgWFhaDg4NISEgsLCwaGhoLCwtRUVGgoKBaWloYGBgoKCiiqna4AAAG6klEQVR4nO2ca3uqOhCFdVBBRdSWenfXWqu7x////w6gQIAAk8jF7bPerxJYWeQyyQQ7HQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgHahGxpFFEv9I/jVsleWZa1sbhX9y1am67oDc2V3Xs0YrzaGs+yGnD4Xu7Iaej+PJ/NzVKb7dTk645fxxWsgzm83zcfAKKgfkTPLFPG4vE81XXmmPkhkzWW18xjlKPSUOzlFPIaORsU8Fcfv7Wb5vmrfFU/LJr963b1EodfP3guKeMxcxYp5Kn7CwmujAlOCFmdotTui6Z/i6s0zCol6xUWCtqLUg4g+xcLWw6aQsVj6Q93pw+mrvh7jM6dOuQqJBuVFfI58LUSpprp4zBSiv8LN1rbS2+FVryfUjmjNs8TrQGOuFhp2/6w/LolHqrmQvF1/mFTyqfB2Ppi1O0SmkFE0+KTJG6LTQo7DW0i0v0ZFJ/qmkBXdZW35Q4rT2zHvRuZZVg8ps3vzoz6/jM93nyGGzLe7d0TxBOhomkI0CW/xawcjrB9IsUwhGinVLhhUVC3xMMvFkBs5JzbdlWaUE9kqDGis2Yf6JdNNhoUfx6s6citXIoUSw1UUTG+1PCE7LL9RnW8seQWK6NFewxIvHC7RlnyHZEQFRzqm0CEszh1DQhVq/ebOT/klUobFMVjKMiFA1ug9cWn+XBOUMy5S7fWhVDnahsUu6iFo3Mo4o3tcbqr7wvVRCUyFfq0cz1K05vhQsoQZhlaLysxKb2Gpk6InRNED2fEic61SBxOFSD8eUVzFqWMRFvxRsSS7TdIQa7Yp1I8KbRQ9+QoLHvlvwL7K5DbDhW9KvFxRmlCFkYjdV3WikgrZcPdFhP7Nf9/JclNeOYp7W0v8MOdHcRrQm8W7vO0BhUV+fZS9vvuOrBmXUJk/7LgYq0mSobrAqYWiKsaZImFd9a7giRuV+o/lvSkR2Ab7XLWxJcLEoxLLCvuXX2VZGJ+2h5KYvBkh2kLxiS+fKXgSb2RcGc1xKRHXFn+leimhWbicvW4RW1dBABx2T2lyqjV6svRIUrVwNX9TV4g08tvJ3RI3o6pl5qU7KsLF7PBeHB9yx5O7JcfG61zKd8mOijCp8tMaiU2h3EErGMJV9tkbY1Y4StBYuJSd1Ui8/Jz7B5a0G80XUBioiL19zfZEjEnlu1iBJS1tDHAoyLMnZLM3hxLZqkGeJ+l02HORnzslcfU+1/JE2uOecb5JkbdOTsbcS62+I91TIoOb+GwR2UEO721uxWv4niSOA2Q7zxMPrgkkm29EyawCfzxJJGgykSz18w4ePR3poTaTpOd7kjwnlFxQP9OKr5yTmUiNjtMZaXbuKn2aLO493tg6+GqqPtWw3MWbBNl9L/YGSiZ1u4hu62wzt316NiNrZdvjhWz5zt9t3qWLzkbWdGo6/8w4wiZ/EyrtSb/8Zi8CP9dM5Td7EfgHQ+Oc6oujkAkkxhnOl0Ah6fVPhSCPIF/gyj0Zl9/uJVA4WiMcyGmMZQu7/0oHC6jxtN6+jTWD0iFzKvkyonIcP0hu+qHMXHjoScMDSo/a2Mz81T2T0wQf4XKq2cMJiof8Gn1llzi/fSi/ujJUj1LTtDltb0LOnxpcdysEJ3dTGpt5TuI5CDIaOxOncHgx9ETv+Ls6V4MSGE2l5DW+9mqoFc9SlnjxYkPdR+NbyWYayiZpSfDgzncTT9b7LqOBPN8840gn+T1WfWh9Uqv1jZEaI4kjncQHZrWh+fFb7TGKKXUkeHTdmdc37e8Ba/3s5NDPMSR4tl3vVp/SSichrM4UqJNvyO2F1NlKlcM1QVhtuuZGoSOBKePaJuWHPkSvae7ZmsV+hK7UtHnwwBfXnboyPQ7DkNvj7TpmZa3IRFRV/anxd6YhweNpV/m6S/cTdEFVxQvkXtG/40hd2Vc7Az3+Tx/+fnWFofZI0ZGbK1Z1Ck7ak3BKU0VR5fmvhiM3BWZF40rZV+sqkpT/XCHLzFEYR7IS7CpeTOm/GyhJejRZ+ms94MhNArkPDreHavpNrGj3yBf3vSr+7cpzZTXRb7CnQeX/uKU/0s33DzYRUQSZei12WL0jN0Gmevpy6WqOq/kqyPr8UhNxntT3r2yKI935aPH+QkZZBo0n/LXQ1q1DRELOnjUtztbOihvB6+kwBkeGL9fJtF5H7nIMtzgzdekN7Br9iHR4SnbO52/uPv95HryXemXEaozBWrbfdD5M3ClnyVudEp/+zrQsdzHpzYffp+t1MzwcR45pNKcjEtOf7t+Xw1n33L1uLvPewl31G7QjrUZC80JkSlpQAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDnf3ySZVkusIDqAAAAAElFTkSuQmCC">
+
+    <center>
+        <h3 class="btn btn-info">Realtime Filter</h3>
+        <hr>
+        <button type="button" onclick="take_snapshot();" class="btn btn-success">Take Snapshot</button>
+    </center>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
